@@ -20,13 +20,12 @@ db.on("connected", function () {
 
 const app = express();
 app.use(require("./config/checkToken"));
-// app.use(
-//   cors({
-//     origin: process.env.CLIENT_ORIGIN || `http://localhost:${CLIENTDEVPORT}`,
-//   })
-// );
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || `http://localhost:${CLIENTDEVPORT}`,
+  })
+);
 
-app.use(cors({ origin: "https://www.apollodispatch.com" }));
 const PORT = process.env.PORT || SERVERDEVPORT;
 
 app.use(express.json());
