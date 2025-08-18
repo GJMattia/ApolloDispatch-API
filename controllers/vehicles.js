@@ -7,7 +7,7 @@ module.exports = {
   updateTire,
   updateFluid,
   updateStatus,
-  updateRegistration,
+  updateInspection,
   addNote,
   deleteNote,
 };
@@ -39,12 +39,12 @@ async function addNote(req, res) {
   }
 }
 
-async function updateRegistration(req, res) {
+async function updateInspection(req, res) {
   try {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
-    vehicle.registration = req.body.registration;
+    vehicle.inspection = req.body.inspection;
     await vehicle.save();
-    res.json({ registration: vehicle.registration, id: vehicle._id });
+    res.json({ inspection: vehicle.inspection, id: vehicle._id });
   } catch (err) {
     res
       .status(500)
@@ -101,14 +101,14 @@ async function getVehicles(req, res) {
 async function createVehicle(req, res) {
   try {
     const userID = req.user._id;
-    const { name, vin, registration, type } = req.body.formData;
+    const { name, vin, inspection, type } = req.body.formData;
 
     const newVehicle = await Vehicle.create({
       user: userID,
       name,
       type,
       vin,
-      registration: new Date(registration),
+      inspection: new Date(inspection),
     });
 
     await User.findByIdAndUpdate(

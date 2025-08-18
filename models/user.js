@@ -24,26 +24,6 @@ const userSchema = new Schema(
       minlength: 3,
       required: true,
     },
-    birthday: {
-      mm: {
-        type: Number,
-        min: 1,
-        max: 12,
-        required: true,
-      },
-      dd: {
-        type: Number,
-        min: 1,
-        max: 31,
-        required: true,
-      },
-      yyyy: {
-        type: Number,
-        min: 1900,
-        max: new Date().getFullYear(),
-        required: true,
-      },
-    },
     verified: {
       type: Boolean,
       trim: true,

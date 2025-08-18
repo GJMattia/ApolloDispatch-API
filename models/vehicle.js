@@ -20,9 +20,9 @@ const vehicle = new Schema(
       type: Number,
       required: true,
     },
-    registration: {
+    inspection: {
       type: Date,
-      required: true,
+      default: null,
     },
     fluid: {
       type: Boolean,

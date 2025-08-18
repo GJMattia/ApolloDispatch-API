@@ -12,7 +12,7 @@ router.put("/updatefluid", vehicleCtrl.updateFluid);
 
 router.put("/updatestatus", vehicleCtrl.updateStatus);
 
-router.put("/updateregistration", vehicleCtrl.updateRegistration);
+router.put("/updateinspection", vehicleCtrl.updateInspection);
 
 router.put("/addnote", vehicleCtrl.addNote);
 
