@@ -18,4 +18,6 @@ router.put("/addnote", vehicleCtrl.addNote);
 
 router.delete("/deletenote", vehicleCtrl.deleteNote);
 
+router.put("/editnote", vehicleCtrl.editNote);
+
 module.exports = router;

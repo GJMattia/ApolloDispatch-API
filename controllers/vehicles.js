@@ -10,7 +10,23 @@ module.exports = {
   updateInspection,
   addNote,
   deleteNote,
+  editNote,
 };
+
+async function editNote(req, res) {
+  try {
+    const { vehicleId, noteIndex, editedNote } = req.body;
+    const vehicle = await Vehicle.findById(vehicleId);
+    vehicle.notes[noteIndex].text = editedNote;
+    await vehicle.save();
+    return res.json({ vehicleId, noteIndex, editedNote });
+  } catch (err) {
+    console.error("Failed to delete note from vehicle:", err);
+    return res
+      .status(500)
+      .json({ error: "Failed to delete note from vehicle" });
+  }
+}
 
 async function deleteNote(req, res) {
   try {
