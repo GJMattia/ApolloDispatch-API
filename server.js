@@ -6,8 +6,8 @@ const nodemailer = require("nodemailer");
 
 //Routers
 const userRouter = require("./routes/users");
-const postRouter = require("./routes/posts");
 const vehicleRouter = require("./routes/vehicles");
+const daRouter = require("./routes/das");
 
 const SERVERDEVPORT = 4741;
 const CLIENTDEVPORT = 5173;
@@ -35,9 +35,9 @@ const ensureLoggedIn = require("./config/ensureLoggedIn");
 
 app.use("/users", userRouter);
 
-app.use("/posts", ensureLoggedIn, postRouter);
-
 app.use("/vehicles", ensureLoggedIn, vehicleRouter);
+
+app.use("/das", ensureLoggedIn, daRouter);
 
 //Email Verification Code Configuration
 
