@@ -17,7 +17,7 @@ const vehicle = new Schema(
       required: true,
     },
     vin: {
-      type: Number,
+      type: String,
       required: true,
     },
     inspection: {

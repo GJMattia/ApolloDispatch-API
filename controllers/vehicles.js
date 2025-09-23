@@ -11,7 +11,19 @@ module.exports = {
   addNote,
   deleteNote,
   editNote,
+  updateVin,
 };
+
+async function updateVin(req, res) {
+  try {
+    const vehicle = await Vehicle.findById(req.body.vehicleID);
+    vehicle.vin = req.body.vin;
+    await vehicle.save();
+    res.json({ vin: vehicle.vin, id: vehicle._id });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update vin." });
+  }
+}
 
 async function editNote(req, res) {
   try {
