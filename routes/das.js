@@ -10,4 +10,6 @@ router.put("/flipstatus", daCtrl.flipStatus);
 
 router.put("/resetallstatus", daCtrl.resetAllStatus);
 
+router.delete("/deleteda", daCtrl.deleteDA);
+
 module.exports = router;

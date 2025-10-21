@@ -6,7 +6,19 @@ module.exports = {
   createDA,
   flipStatus,
   resetAllStatus,
+  deleteDA,
 };
+
+async function deleteDA(req, res) {
+  try {
+    const { daID } = req.body;
+    const da = await DA.findByIdAndDelete(daID);
+    return res.json({ deletedID: da._id });
+  } catch (err) {
+    console.error("Failed to delete DA", err);
+    return res.status(500).json({ error: "Failed to delete DA" });
+  }
+}
 
 async function resetAllStatus(req, res) {
   try {
