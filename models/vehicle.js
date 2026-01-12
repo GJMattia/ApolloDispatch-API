@@ -20,7 +20,15 @@ const vehicle = new Schema(
       type: String,
       required: true,
     },
+    plate: {
+      type: String,
+      default: "N/A",
+    },
     inspection: {
+      type: Date,
+      default: null,
+    },
+    registration: {
       type: Date,
       default: null,
     },

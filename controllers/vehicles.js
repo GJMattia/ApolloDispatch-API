@@ -8,10 +8,12 @@ module.exports = {
   updateFluid,
   updateStatus,
   updateInspection,
+  updateRegistration,
   addNote,
   deleteNote,
   editNote,
   updateVin,
+  updatePlate,
 };
 
 async function updateVin(req, res) {
@@ -74,9 +76,20 @@ async function updateInspection(req, res) {
     await vehicle.save();
     res.json({ inspection: vehicle.inspection, id: vehicle._id });
   } catch (err) {
+    res.status(500).json({ error: "Failed to update inspection information" });
+  }
+}
+
+async function updateRegistration(req, res) {
+  try {
+    const vehicle = await Vehicle.findById(req.body.vehicleID);
+    vehicle.registration = req.body.registration;
+    await vehicle.save();
+    res.json({ registration: vehicle.registration, id: vehicle._id });
+  } catch (err) {
     res
       .status(500)
-      .json({ error: "Failed to update drive status information" });
+      .json({ error: "Failed to update registration information" });
   }
 }
 
@@ -101,6 +114,17 @@ async function updateTire(req, res) {
     res.json({ tire: vehicle.tire, id: vehicle._id });
   } catch (err) {
     res.status(500).json({ error: "Failed to update tire information" });
+  }
+}
+
+async function updatePlate(req, res) {
+  try {
+    const vehicle = await Vehicle.findById(req.body.vehicleID);
+    vehicle.plate = req.body.plate;
+    await vehicle.save();
+    res.json({ plate: vehicle.plate, id: vehicle._id });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update plate information" });
   }
 }
 

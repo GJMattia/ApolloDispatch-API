@@ -14,6 +14,10 @@ router.put("/updatestatus", vehicleCtrl.updateStatus);
 
 router.put("/updateinspection", vehicleCtrl.updateInspection);
 
+router.put("/updateregistration", vehicleCtrl.updateRegistration);
+
+router.put("/updateplate", vehicleCtrl.updatePlate);
+
 router.put("/addnote", vehicleCtrl.addNote);
 
 router.delete("/deletenote", vehicleCtrl.deleteNote);
