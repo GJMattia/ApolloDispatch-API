@@ -21,7 +21,11 @@ async function updateVin(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.vin = req.body.vin;
     await vehicle.save();
-    res.json({ vin: vehicle.vin, id: vehicle._id });
+    res.json({
+      vin: vehicle.vin,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to update vin." });
   }
@@ -33,7 +37,12 @@ async function editNote(req, res) {
     const vehicle = await Vehicle.findById(vehicleId);
     vehicle.notes[noteIndex].text = editedNote;
     await vehicle.save();
-    return res.json({ vehicleId, noteIndex, editedNote });
+    return res.json({
+      vehicleId,
+      noteIndex,
+      editedNote,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     console.error("Failed to delete note from vehicle:", err);
     return res
@@ -48,7 +57,7 @@ async function deleteNote(req, res) {
     const vehicle = await Vehicle.findById(vehicleId);
     vehicle.notes.splice(noteIndex, 1);
     await vehicle.save();
-    return res.json({ vehicleId, noteIndex });
+    return res.json({ vehicleId, noteIndex, updatedAt: vehicle.updatedAt });
   } catch (err) {
     console.error("Failed to delete note from vehicle:", err);
     return res
@@ -62,7 +71,11 @@ async function addNote(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.notes.push({ text: req.body.note }); // ✅ matches schema
     await vehicle.save();
-    res.json({ notes: vehicle.notes, id: vehicle._id });
+    res.json({
+      notes: vehicle.notes,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to add note to vehicle" });
@@ -74,7 +87,11 @@ async function updateInspection(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.inspection = req.body.inspection;
     await vehicle.save();
-    res.json({ inspection: vehicle.inspection, id: vehicle._id });
+    res.json({
+      inspection: vehicle.inspection,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to update inspection information" });
   }
@@ -85,7 +102,11 @@ async function updateRegistration(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.registration = req.body.registration;
     await vehicle.save();
-    res.json({ registration: vehicle.registration, id: vehicle._id });
+    res.json({
+      registration: vehicle.registration,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res
       .status(500)
@@ -98,7 +119,11 @@ async function updateStatus(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.status = req.body.status;
     await vehicle.save();
-    res.json({ status: vehicle.status, id: vehicle._id });
+    res.json({
+      status: vehicle.status,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res
       .status(500)
@@ -111,7 +136,11 @@ async function updateTire(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.tire = req.body.tire;
     await vehicle.save();
-    res.json({ tire: vehicle.tire, id: vehicle._id });
+    res.json({
+      tire: vehicle.tire,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to update tire information" });
   }
@@ -122,7 +151,11 @@ async function updatePlate(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.plate = req.body.plate;
     await vehicle.save();
-    res.json({ plate: vehicle.plate, id: vehicle._id });
+    res.json({
+      plate: vehicle.plate,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to update plate information" });
   }
@@ -133,7 +166,11 @@ async function updateFluid(req, res) {
     const vehicle = await Vehicle.findById(req.body.vehicleID);
     vehicle.fluid = req.body.fluid;
     await vehicle.save();
-    res.json({ fluid: vehicle.fluid, id: vehicle._id });
+    res.json({
+      fluid: vehicle.fluid,
+      id: vehicle._id,
+      updatedAt: vehicle.updatedAt,
+    });
   } catch (err) {
     res
       .status(500)
