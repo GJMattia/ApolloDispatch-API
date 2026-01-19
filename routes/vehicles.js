@@ -22,6 +22,8 @@ router.put("/addnote", vehicleCtrl.addNote);
 
 router.delete("/deletenote", vehicleCtrl.deleteNote);
 
+router.delete("/deletevehicle", vehicleCtrl.deleteVehicle);
+
 router.put("/editnote", vehicleCtrl.editNote);
 
 router.put("/updatevin", vehicleCtrl.updateVin);

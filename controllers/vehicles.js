@@ -14,7 +14,19 @@ module.exports = {
   editNote,
   updateVin,
   updatePlate,
+  deleteVehicle,
 };
+
+async function deleteVehicle(req, res) {
+  try {
+    const vehicleID = req.body.vehicleID;
+    await Vehicle.findByIdAndDelete(vehicleID);
+    return res.json({ vehicleID: vehicleID });
+  } catch (err) {
+    console.error("Failed to delete vehicle", err);
+    return res.status(500).json({ error: "Failed to delete vehicle" });
+  }
+}
 
 async function updateVin(req, res) {
   try {

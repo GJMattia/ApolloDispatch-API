@@ -18,7 +18,7 @@ const vehicle = new Schema(
     },
     vin: {
       type: String,
-      required: true,
+      default: "#VIN",
     },
     plate: {
       type: String,
