@@ -23,7 +23,7 @@ app.use(require("./config/checkToken"));
 app.use(
   cors({
     origin: process.env.CLIENT_ORIGIN || `http://localhost:${CLIENTDEVPORT}`,
-  })
+  }),
 );
 
 const PORT = process.env.PORT || SERVERDEVPORT;
@@ -44,8 +44,8 @@ app.use("/das", ensureLoggedIn, daRouter);
 const transporter = nodemailer.createTransport({
   service: "Gmail", // or another email service
   auth: {
-    user: "zombiedbmailer@gmail.com",
-    pass: "igtt heed gpvu ugkr",
+    user: "apollodispatch96@gmail.com",
+    pass: "sdvm mdyg pngl iiid",
   },
 });
 
@@ -53,10 +53,10 @@ app.post("/send-verification-email", (req, res) => {
   const { email, code } = req.body;
 
   const mailOptions = {
-    from: "zombiedbmailer@gmail.com",
+    from: "apollodispatch96@gmail.com",
     to: email,
-    subject: "ZombieDB email verification code",
-    text: `Hello! This message is so you can verify your ZombieDB account, Your ZombieDB verification code is ${code}`,
+    subject: "Apollo Dispatch Verification Code",
+    text: `Hello! This message is so you can verify your Apollo Dispatch account, Your verification code is ${code}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -71,10 +71,10 @@ app.post("/email-reset-code", (req, res) => {
   const { email, code } = req.body;
 
   const mailOptions = {
-    from: "zombiedbmailer@gmail.com",
+    from: "apollodispatch96@gmail.com",
     to: email,
-    subject: "This is the code to reset your password",
-    text: `Your verification code is ${code}`,
+    subject: "Apollo Dispatch Reset PW Code",
+    text: `Your PW reset code is ${code}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
